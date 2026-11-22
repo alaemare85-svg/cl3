@@ -202,76 +202,167 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   shaderCanvas.hidden = true;
 } else {
   try {
-    await createShader(shaderCanvas, {
-      components: [
-        {
-          type: "ReflectivePlane",
-          id: "idmwrysbk40m8w14zjr",
-        },
-        {
-          type: "Godrays",
-          id: "idmwrz8hjw93c6vns44",
-          props: {
-            density: 1,
-            intensity: 1,
-            rayColor: "#a60711",
-            speed: 2,
-            spotty: 0,
-          },
-        },
-        {
-          type: "Godrays",
-          id: "idmwrz8xjeis4mtbgjz",
-          props: {
-            rayColor: "#fb42cab3",
-          },
-        },
-        {
-          type: "Glitch",
-          id: "idmwrz9p0yj56iuob34",
-        },
-        {
-          type: "TimeTrail",
-          id: "idmwrz9vnyacntupd2v",
-        },
-        {
-          type: "ChannelBlur",
-          id: "idmwrza15cl8eb66j0q",
-        },
-        {
-          type: "Bulge",
-          id: "idmwrza8o9g8jkfv03r",
-          props: {
-            center: {
-              x: 0.46,
-              y: 0.41,
+    await createShader(
+      shaderCanvas,
+      {
+        components: [
+          {
+            type: "Strands",
+            id: "idmws79x820dndp6r5t",
+            props: {
+              amplitude: 5,
+              boundingBox: {
+                x: {
+                  unit: "uv",
+                  value: 0.1306,
+                },
+                y: {
+                  unit: "uv",
+                  value: -0.1835,
+                },
+                height: {
+                  unit: "uv",
+                  value: 2.1837,
+                },
+              },
+              colorScale: 6,
+              colorSpace: "lch",
+              frequency: 5,
+              lineWidth: 0,
+              stops: [
+                {
+                  color: "#00e5ff",
+                  position: 0,
+                },
+                {
+                  color: "#4cb6cb",
+                  position: 0,
+                },
+                {
+                  color: "#3d0213",
+                  position: 0.0897,
+                },
+                {
+                  color: "#7e0aff",
+                  position: 0.4574,
+                },
+                {
+                  color: "#851544",
+                  position: 0.7803,
+                },
+              ],
             },
           },
-        },
-        {
-          type: "Text",
-          id: "idmwrzakcfj5680usjy",
-          props: {
-            center: {
-              x: 0.44,
-              y: 0.39,
+          {
+            type: "Godrays",
+            id: "idmws72rbqrk3rryohr",
+            props: {
+              blendMode: "normal-oklch",
+              density: 0.5,
+              intensity: 1,
+              rayColor: "#700404",
+              speed: 2,
             },
-            color: "#943a5985",
-            text: "FAHAD",
           },
-        },
-        {
-          type: "Group",
-          id: "idmws4q4mf9pc9oqmsc",
-          children: [
-            {
-              type: "ReflectivePlane",
-              id: "idmwrzemkkd7vxetrbo",
+          {
+            type: "Godrays",
+            id: "idmws73s0obfxpa27m0",
+            props: {
+              rayColor: "#204d9e",
             },
-          ],
-        },
-      ],
-    });
+          },
+          {
+            type: "Godrays",
+            id: "idmws73zikjcgdhjbxj",
+            props: {
+              rayColor: "#9b46a6",
+            },
+          },
+          {
+            type: "SineWave",
+            id: "idmws74qq4361wqzx2z",
+            props: {
+              amplitude: 1,
+              color: "#6e3975",
+              frequency: 20,
+              position: {
+                x: 0.54,
+                y: 0.83,
+              },
+              softness: 1,
+              speed: 5,
+              thickness: 0.1,
+            },
+          },
+          {
+            type: "Godrays",
+            id: "idmws75lakirrkxwr0x",
+            props: {
+              rayColor: "#ff00e5",
+            },
+          },
+          {
+            type: "Glitch",
+            id: "idmws75z0yedv979l3i",
+          },
+          {
+            type: "Beam",
+            id: "idmws7c4jmcynqmjk1d",
+            props: {
+              boundingBox: {
+                x: {
+                  unit: "uv",
+                  value: 0.2491,
+                },
+                y: {
+                  unit: "uv",
+                  value: 0.1123,
+                },
+                width: {
+                  unit: "uv",
+                  value: 0.5163,
+                },
+                height: {
+                  unit: "uv",
+                  value: 0.7755,
+                },
+              },
+              insideColor: "#1a0000",
+            },
+          },
+          {
+            type: "Star",
+            id: "idmws7dbgeozwh5vdck",
+            props: {
+              center: {
+                x: 0.52,
+                y: 0.35,
+              },
+              color: "#04043d",
+              radius: 0.0606,
+              rotation: 341,
+            },
+          },
+          {
+            type: "Text",
+            id: "idmws7feqvcelxl0fw7",
+            props: {
+              center: {
+                x: 0.52,
+                y: 0.5,
+              },
+              color: "#00e5ff",
+              fontSize: 0.0414,
+              text: "البحث ",
+            },
+          },
+        ],
+      },
+      {
+        colorSpace: "srgb",
+        toneMapping: "reinhard",
+      },
+    );
   } catch (error) {
     shaderCanvas.hidden = true;
     console.error("Shader effects could not be initialized.", error);
