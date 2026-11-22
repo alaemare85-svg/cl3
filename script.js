@@ -277,53 +277,6 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       {
         components: [
           {
-            type: "Strands",
-            id: "idmws79x820dndp6r5t",
-            props: {
-              amplitude: 5,
-              boundingBox: {
-                x: {
-                  unit: "uv",
-                  value: 0.1306,
-                },
-                y: {
-                  unit: "uv",
-                  value: -0.1835,
-                },
-                height: {
-                  unit: "uv",
-                  value: 2.1837,
-                },
-              },
-              colorScale: 6,
-              colorSpace: "lch",
-              frequency: 5,
-              lineWidth: 0,
-              stops: [
-                {
-                  color: "#00e5ff",
-                  position: 0,
-                },
-                {
-                  color: "#4cb6cb",
-                  position: 0,
-                },
-                {
-                  color: "#3d0213",
-                  position: 0.0897,
-                },
-                {
-                  color: "#7e0aff",
-                  position: 0.4574,
-                },
-                {
-                  color: "#851544",
-                  position: 0.7803,
-                },
-              ],
-            },
-          },
-          {
             type: "Godrays",
             id: "idmws72rbqrk3rryohr",
             props: {
