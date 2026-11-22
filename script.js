@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createShader } from "https://esm.sh/shaders@4.0.7/js";
 
 const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
@@ -22,6 +23,87 @@ const authWelcome = document.querySelector("#auth-welcome");
 const authSignout = document.querySelector("#auth-signout");
 const authMessage = document.querySelector("#auth-message");
 let authMode = "signup";
+
+const shaderCanvas = document.querySelector("#canvas");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  shaderCanvas.hidden = true;
+} else {
+  try {
+    await createShader(shaderCanvas, {
+      components: [
+        {
+          type: "ReflectivePlane",
+          id: "idmwrysbk40m8w14zjr",
+        },
+        {
+          type: "Godrays",
+          id: "idmwrz8hjw93c6vns44",
+          props: {
+            density: 1,
+            intensity: 1,
+            rayColor: "#a60711",
+            speed: 2,
+            spotty: 0,
+          },
+        },
+        {
+          type: "Godrays",
+          id: "idmwrz8xjeis4mtbgjz",
+          props: {
+            rayColor: "#fb42cab3",
+          },
+        },
+        {
+          type: "Glitch",
+          id: "idmwrz9p0yj56iuob34",
+        },
+        {
+          type: "TimeTrail",
+          id: "idmwrz9vnyacntupd2v",
+        },
+        {
+          type: "ChannelBlur",
+          id: "idmwrza15cl8eb66j0q",
+        },
+        {
+          type: "Bulge",
+          id: "idmwrza8o9g8jkfv03r",
+          props: {
+            center: {
+              x: 0.46,
+              y: 0.41,
+            },
+          },
+        },
+        {
+          type: "Text",
+          id: "idmwrzakcfj5680usjy",
+          props: {
+            center: {
+              x: 0.44,
+              y: 0.39,
+            },
+            color: "#943a5985",
+            text: "FAHAD",
+          },
+        },
+        {
+          type: "Group",
+          id: "idmws4q4mf9pc9oqmsc",
+          children: [
+            {
+              type: "ReflectivePlane",
+              id: "idmwrzemkkd7vxetrbo",
+            },
+          ],
+        },
+      ],
+    });
+  } catch (error) {
+    shaderCanvas.hidden = true;
+    console.error("Shader effects could not be initialized.", error);
+  }
+}
 
 searchForm.addEventListener("submit", (event) => {
   const query = searchInput.value.trim();
