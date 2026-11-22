@@ -30,6 +30,12 @@ const translations = {
     "language-label": "اللغة",
     "language-ar": "العربية",
     "language-en": "English",
+    "theme-label": "نمط الألوان الداكن",
+    "theme-ocean": "المحيط الليلي",
+    "theme-violet": "البنفسجي الداكن",
+    "theme-forest": "الغابة الليلية",
+    "theme-crimson": "الأحمر الداكن",
+    "theme-custom": "مخصص",
     "background-color-label": "لون الخلفية",
     "text-color-label": "لون النص",
     "reset-settings": "استعادة الإعدادات",
@@ -69,6 +75,12 @@ const translations = {
     "language-label": "Language",
     "language-ar": "Arabic",
     "language-en": "English",
+    "theme-label": "Dark color theme",
+    "theme-ocean": "Midnight ocean",
+    "theme-violet": "Deep violet",
+    "theme-forest": "Forest night",
+    "theme-crimson": "Dark crimson",
+    "theme-custom": "Custom",
     "background-color-label": "Background color",
     "text-color-label": "Text color",
     "reset-settings": "Reset settings",
@@ -81,10 +93,29 @@ const translations = {
   },
 };
 
+const darkThemes = {
+  ocean: {
+    backgroundColor: "#06101c",
+    textColor: "#49d6ff",
+  },
+  violet: {
+    backgroundColor: "#10091d",
+    textColor: "#d4a3ff",
+  },
+  forest: {
+    backgroundColor: "#071810",
+    textColor: "#60e0ae",
+  },
+  crimson: {
+    backgroundColor: "#19080d",
+    textColor: "#ff7185",
+  },
+};
+
 const defaultPreferences = {
   language: "ar",
-  backgroundColor: "#081629",
-  textColor: "#ff4545",
+  themePreset: "ocean",
+  ...darkThemes.ocean,
 };
 const preferencesKey = "wcl3-preferences";
 
@@ -95,14 +126,29 @@ function isValidColor(value) {
 function loadPreferences() {
   try {
     const saved = JSON.parse(localStorage.getItem(preferencesKey) || "{}");
+    const hasSavedColors =
+      isValidColor(saved.backgroundColor) || isValidColor(saved.textColor);
+    const savedThemeIsValid =
+      saved.themePreset === "custom" ||
+      Object.prototype.hasOwnProperty.call(darkThemes, saved.themePreset);
+    const themePreset = savedThemeIsValid
+      ? saved.themePreset
+      : hasSavedColors
+        ? "custom"
+        : defaultPreferences.themePreset;
+    const presetColors = darkThemes[themePreset] || defaultPreferences;
+
     return {
       language: saved.language === "en" ? "en" : "ar",
-      backgroundColor: isValidColor(saved.backgroundColor)
-        ? saved.backgroundColor
-        : defaultPreferences.backgroundColor,
-      textColor: isValidColor(saved.textColor)
-        ? saved.textColor
-        : defaultPreferences.textColor,
+      themePreset,
+      backgroundColor:
+        themePreset === "custom" && isValidColor(saved.backgroundColor)
+          ? saved.backgroundColor
+          : presetColors.backgroundColor,
+      textColor:
+        themePreset === "custom" && isValidColor(saved.textColor)
+          ? saved.textColor
+          : presetColors.textColor,
     };
   } catch (error) {
     console.warn("Could not load local preferences.", error);
@@ -116,6 +162,7 @@ const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 const searchMessage = document.querySelector("#search-message");
 const languageSelect = document.querySelector("#language-select");
+const themePresetSelect = document.querySelector("#theme-preset");
 const backgroundColorInput = document.querySelector("#background-color");
 const textColorInput = document.querySelector("#text-color");
 const resetSettingsButton = document.querySelector("#reset-settings");
@@ -132,6 +179,7 @@ function applyColors() {
     preferences.backgroundColor,
   );
   document.documentElement.style.setProperty("--page-text", preferences.textColor);
+  themePresetSelect.value = preferences.themePreset;
   backgroundColorInput.value = preferences.backgroundColor;
   textColorInput.value = preferences.textColor;
 }
@@ -179,16 +227,38 @@ languageSelect.addEventListener("change", () => {
 });
 
 backgroundColorInput.addEventListener("input", () => {
+  preferences.themePreset = "custom";
   preferences.backgroundColor = backgroundColorInput.value;
   applyColors();
 });
 backgroundColorInput.addEventListener("change", savePreferences);
 
 textColorInput.addEventListener("input", () => {
+  preferences.themePreset = "custom";
   preferences.textColor = textColorInput.value;
   applyColors();
 });
 textColorInput.addEventListener("change", savePreferences);
+
+themePresetSelect.addEventListener("change", () => {
+  const themePreset = themePresetSelect.value;
+  if (themePreset === "custom") {
+    preferences.themePreset = "custom";
+    savePreferences();
+    return;
+  }
+
+  const theme = darkThemes[themePreset];
+  if (!theme) {
+    return;
+  }
+
+  preferences.themePreset = themePreset;
+  preferences.backgroundColor = theme.backgroundColor;
+  preferences.textColor = theme.textColor;
+  applyColors();
+  savePreferences();
+});
 
 resetSettingsButton.addEventListener("click", () => {
   preferences = { ...defaultPreferences };
