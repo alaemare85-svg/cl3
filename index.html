@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      id="page-description"
+      content="ابحث في الويب وتصفح روابط مواقع التواصل الاجتماعي."
+    >
+    <meta name="referrer" content="no-referrer">
+    <title>wcl3</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <details id="settings" class="settings-menu">
+        <summary id="settings-heading" class="header-settings" data-i18n="nav-settings">الإعدادات</summary>
+        <div class="settings-popover">
+          <div class="settings-grid">
+            <label for="language-select" data-i18n="language-label">اللغة</label>
+            <select id="language-select">
+              <option value="ar" data-i18n="language-ar">العربية</option>
+              <option value="en" data-i18n="language-en">English</option>
+            </select>
+            <label for="theme-preset" data-i18n="theme-label">نمط الألوان الداكن</label>
+            <select id="theme-preset">
+              <option value="ocean" data-i18n="theme-ocean">المحيط الليلي</option>
+              <option value="violet" data-i18n="theme-violet">البنفسجي الداكن</option>
+              <option value="forest" data-i18n="theme-forest">الغابة الليلية</option>
+              <option value="crimson" data-i18n="theme-crimson">الأحمر الداكن</option>
+              <option value="custom" data-i18n="theme-custom">مخصص</option>
+            </select>
+            <label for="background-color" data-i18n="background-color-label">لون الخلفية</label>
+            <input id="background-color" type="color" value="#06101c">
+            <label for="text-color" data-i18n="text-color-label">لون النص</label>
+            <input id="text-color" type="color" value="#49d6ff">
+            <button id="reset-settings" type="button" data-i18n="reset-settings">استعادة الإعدادات</button>
+            <p id="settings-message" class="settings-message" data-i18n="privacy-note">
+              تُحفظ إعدادات اللغة والألوان على هذا الجهاز فقط.
+            </p>
+            <p class="privacy-notice" data-i18n="external-privacy">
+              لا توجد إعلانات أو أدوات تحليل في الموقع؛ الروابط والخدمات الخارجية تخضع لسياسات مزوّديها.
+            </p>
+          </div>
+        </div>
+      </details>
+      <a class="brand" href="#top" aria-label="wcl3">
+        <span class="brand-mark" aria-hidden="true">W</span>
+        <span>wcl3</span>
+      </a>
+      <nav class="primary-nav" aria-label="التنقل الرئيسي" data-i18n-aria="main-navigation">
+        <a href="#favorites" data-i18n="nav-favorites">المفضّلات</a>
+        <a href="#social" data-i18n="nav-social">التواصل</a>
+      </nav>
+    </header>
+
+    <main id="top" class="site-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-i18n="hero-kicker">مساحة رقمية بطابعك</span></p>
+          <h1 id="hero-title" class="site-name">
+            <span class="hero-brand">wcl3</span>
+            <span class="hero-title-copy" data-i18n="hero-title">اكتشف ما تحب، بطريقتك.</span>
+          </h1>
+          <p class="intro" data-i18n="intro">مكانك للبحث والاستكشاف والاستمتاع بمفضّلاتك.</p>
+
+          <form id="search-form" class="search-form" action="https://www.google.com/search" method="get" role="search">
+            <label class="visually-hidden" for="search-input" data-i18n="search-label">ما الذي تريد البحث عنه؟</label>
+            <input
+              id="search-input"
+              type="search"
+              name="q"
+              placeholder="ابحث في الويب..."
+              data-i18n-placeholder="search-placeholder"
+              autocomplete="off"
+              required
+            >
+            <button type="submit" data-i18n="search-button">ابحث</button>
+          </form>
+          <p id="search-message" class="message" aria-live="polite"></p>
+          <a class="hero-link" href="#favorites">
+            <span data-i18n="hero-explore">استكشف المفضّلات</span>
+            <span aria-hidden="true">↙</span>
+          </a>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-core">W</div>
+          <span class="art-label art-label-top">DIGITAL / 01</span>
+          <span class="art-label art-label-bottom">EXPLORE YOUR WORLD</span>
+        </div>
+      </section>
+
+      <section id="favorites" class="favorites-section content-section" aria-labelledby="favorites-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker" data-i18n="favorites-kicker">مختارات شخصية</p>
+            <h2 id="favorites-heading" data-i18n="favorites-heading">أشياء أحبها</h2>
+          </div>
+          <p class="section-description" data-i18n="favorites-intro">موسيقى وفنّ وفريق يسكن القلب.</p>
+        </div>
+        <div class="favorites-grid">
+          <article class="favorite-card artist-card">
+            <img
+              class="artist-photo"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/96/Umm_Kulthum_as_Fatimah.jpg"
+              alt="أم كلثوم"
+              data-i18n-alt="umm-photo-alt"
+              width="320"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            >
+            <h3 data-i18n="umm-name">أم كلثوم</h3>
+            <a
+              class="song-preview"
+              href="https://youtu.be/qyotD6YYVnE"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="favorite-song"
+              aria-label="استمع إلى أغنية بعيد عنك على YouTube"
+            >
+              <img
+                src="https://img.youtube.com/vi/qyotD6YYVnE/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              >
+              <span class="play-icon" aria-hidden="true"></span>
+            </a>
+          </article>
+
+          <article class="favorite-card artist-card">
+            <img
+              class="artist-photo"
+              src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Mohammed_Abdu.jpg"
+              alt="محمد عبده"
+              data-i18n-alt="mohammed-photo-alt"
+              width="320"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            >
+            <h3 data-i18n="mohammed-name">محمد عبده</h3>
+            <p class="song-list-label" data-i18n="mohammed-songs">أغانٍ شهيرة</p>
+            <div class="song-chips" aria-label="أغانٍ لمحمد عبده" data-i18n-aria="mohammed-songs">
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%83%D9%86" target="_blank" rel="noopener noreferrer" data-i18n="song-places">الأماكن</a>
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D9%84%D9%8A%D9%84%D8%A9+%D8%AE%D9%85%D9%8A%D8%B3" target="_blank" rel="noopener noreferrer" data-i18n="song-thursday">ليلة خميس</a>
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D8%B5%D9%88%D8%AA%D9%83+%D9%8A%D9%86%D8%A7%D8%AF%D9%8A%D9%86%D9%8A" target="_blank" rel="noopener noreferrer" data-i18n="song-voice">صوتك يناديني</a>
+            </div>
+          </article>
+
+          <article class="favorite-card club-card">
+            <a
+              class="club-emblem"
+              href="https://en.wikipedia.org/wiki/Al-Ittihad_Club_(Jeddah)"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="club-link"
+              aria-label="شعار ومعلومات نادي الاتحاد"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/8/87/Al-Ittihad_Club_%28Jeddah%29_logo.svg"
+                alt="شعار نادي الاتحاد"
+                data-i18n-alt="club-logo-alt"
+                width="112"
+                height="112"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              >
+            </a>
+            <h3 data-i18n="club-name">نادي الاتحاد</h3>
+            <p class="club-motto" data-i18n="club-motto">الاتحاد منذ 1996 حتى نهاية العالم</p>
+            <a
+              class="image-credit"
+              href="https://en.wikipedia.org/wiki/File:Al-Ittihad_Club_(Jeddah)_logo.svg"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="club-image-credit"
+            >مصدر الشعار</a>
+          </article>
+        </div>
+        <p class="image-credit artist-attribution">
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Mohammed_Abdu.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="mohammed-image-credit"
+          >الصورة: yahaycouture.com عبر Flickr، قُصّت للعرض</a>
+          ·
+          <a
+            href="https://creativecommons.org/licenses/by/2.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="mohammed-image-license"
+          >CC BY 2.0</a>
+        </p>
+      </section>
+
+      <section id="social" class="social-section content-section" aria-labelledby="social-heading">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker" data-i18n="social-kicker">ابقَ على اتصال</p>
+            <h2 id="social-heading" data-i18n="social-heading">تابعني</h2>
+          </div>
+          <p class="section-description" data-i18n="social-intro">مساحاتي على المنصات الاجتماعية.</p>
+        </div>
+        <nav
+          class="social-links"
+          aria-label="روابط منصات التواصل الاجتماعي"
+          data-i18n-aria="social-links-aria"
+        >
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+            <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" width="24" height="24" loading="lazy">
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+            <img src="https://cdn.simpleicons.org/youtube/FF0000" alt="" width="24" height="24" loading="lazy">
+          </a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+            <img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="" width="24" height="24" loading="lazy">
+          </a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+            <img src="https://cdn.simpleicons.org/facebook/0866FF" alt="" width="24" height="24" loading="lazy">
+          </a>
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X" title="X">
+            <img src="https://cdn.simpleicons.org/x/FFFFFF" alt="" width="24" height="24" loading="lazy">
+          </a>
+        </nav>
+      </section>
+
+      <div class="utility-grid">
+        <section class="secure-preview-section content-section" aria-labelledby="secure-preview-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="preview-kicker">تصميم واجهة</p>
+              <h2 id="secure-preview-heading" data-i18n="secure-preview-heading">بطاقة الوصول</h2>
+            </div>
+          </div>
+          <p id="secure-preview-notice" class="secure-preview-notice" data-i18n="secure-preview-notice">
+            تصميم تجريبي فقط؛ الحقول والزر معطّلة. لا تُدخل بيانات حقيقية.
+          </p>
+          <div class="glitch-form-wrapper">
+            <div class="glitch-card" aria-describedby="secure-preview-notice">
+              <div class="card-header">
+                <div class="card-title">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                    <path d="M12 11.5a3 3 0 0 0 -3 2.824v1.176a3 3 0 0 0 6 0v-1.176a3 3 0 0 0 -3 -2.824z"></path>
+                  </svg>
+                  <span data-i18n="secure-data-title">SECURE_DATA</span>
+                </div>
+                <div class="card-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              </div>
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="preview-username" class="form-label" data-i18n="preview-username">USERNAME</label>
+                  <input id="preview-username" type="text" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="preview-access-key" class="form-label" data-i18n="preview-access-key">ACCESS_KEY</label>
+                  <input id="preview-access-key" type="password" disabled>
+                </div>
+                <button type="button" class="submit-btn" disabled data-i18n="preview-connect">
+                  INITIATE_CONNECTION
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="privacy-section content-section" aria-labelledby="privacy-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" data-i18n="privacy-kicker">الخصوصية والأمان</p>
+              <h2 id="privacy-heading" data-i18n="privacy-heading">خصوصيتك أولًا</h2>
+            </div>
+          </div>
+          <ul class="privacy-points">
+            <li>
+              <span class="privacy-number">01</span>
+              <div>
+                <h3 data-i18n="privacy-local-title">إعداداتك تبقى على جهازك</h3>
+                <p data-i18n="privacy-local-description">اللغة والألوان تُحفظ محليًا في المتصفح فقط.</p>
+              </div>
+            </li>
+            <li>
+              <span class="privacy-number">02</span>
+              <div>
+                <h3 data-i18n="privacy-no-tracking-title">دون تتبّع أو حسابات</h3>
+                <p data-i18n="privacy-no-tracking-description">لا يستخدم الموقع أدوات تحليل أو تسجيل دخول.</p>
+              </div>
+            </li>
+            <li>
+              <span class="privacy-number">03</span>
+              <div>
+                <h3 data-i18n="privacy-search-title">البحث باختيارك</h3>
+                <p data-i18n="privacy-search-description">عند البحث فقط، يُرسل الاستعلام إلى Google.</p>
+              </div>
+            </li>
+          </ul>
+          <p class="privacy-footnote" data-i18n="privacy-external-note">
+            الصور والروابط الخارجية تصل إلى مزوّديها وقد تخضع لسياساتهم.
+          </p>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">W</span><span>wcl3</span></a>
+      <p data-i18n="footer-note">مساحة شخصية تستمر في التطوّر.</p>
+      <a href="#top" data-i18n="back-to-top">العودة للأعلى ↑</a>
+    </footer>
+  </body>
+</html>
