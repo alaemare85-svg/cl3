@@ -4,11 +4,18 @@
 
 ## تشغيل مثال Java
 
-تحتاج إلى تثبيت JDK. من مجلد المشروع شغّل:
+ثبّت JDK وتأكد من إضافته إلى `PATH`. افتح PowerShell في مجلد المشروع وتحقق من توفر أدوات Java:
 
-```text
+```powershell
+java -version
+javac -version
+```
+
+بعدها ترجم البرنامج وشغّله:
+
+```powershell
 javac Main.java
-java Main
+if ($LASTEXITCODE -eq 0) { java Main }
 ```
 
 ## صفحة الويب
