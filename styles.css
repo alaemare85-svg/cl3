@@ -1,8 +1,10 @@
 :root {
-  color-scheme: light;
+  --page-background: #081629;
+  --page-text: #ff4545;
+  color-scheme: dark;
   font-family: Tahoma, Arial, sans-serif;
-  background: #080b14;
-  color: #f1f5ff;
+  background: var(--page-background);
+  color: var(--page-text);
 }
 
 * {
@@ -26,6 +28,7 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+  opacity: 0.82;
   pointer-events: none;
 }
 
@@ -38,7 +41,7 @@ body {
   z-index: 1;
   width: min(100%, 600px);
   padding: clamp(24px, 6vw, 48px);
-  border: 1px solid #e1e7f0;
+  border: 1px solid color-mix(in srgb, var(--page-text) 45%, transparent);
   border-radius: 20px;
   background: transparent;
   box-shadow: 0 16px 48px rgb(23 32 51 / 8%);
@@ -48,7 +51,7 @@ body {
 .site-name {
   display: inline-block;
   margin: 0;
-  color: rgb(0, 0, 255);
+  color: var(--page-text);
   font-size: clamp(2.5rem, 10vw, 4rem);
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -59,18 +62,16 @@ body {
   0%,
   100% {
     transform: translateY(0) scale(1);
-    text-shadow: 0 0 0 rgb(0 0 255 / 0%);
   }
 
   50% {
     transform: translateY(-5px) scale(1.04);
-    text-shadow: 0 10px 24px rgb(0 0 255 / 25%);
   }
 }
 
 .intro {
   margin: 12px 0 24px;
-  color: #d3d9e8;
+  color: var(--page-text);
   line-height: 1.8;
 }
 
@@ -82,7 +83,7 @@ body {
 .search-form input {
   min-width: 0;
   flex: 1;
-  border: 1px solid rgb(255 255 255 / 55%);
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
   border-radius: 10px;
   padding: 12px 14px;
   background: transparent;
@@ -91,30 +92,33 @@ body {
 }
 
 .search-form input::placeholder {
-  color: rgb(230 235 245 / 80%);
+  color: color-mix(in srgb, var(--page-text) 80%, transparent);
   opacity: 1;
 }
 
 button {
-  border: 0;
+  border: 1px solid var(--page-text);
   border-radius: 10px;
   padding: 12px 24px;
-  background: rgb(0, 0, 255);
-  color: #fff;
+  background: var(--page-background);
+  color: var(--page-text);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
 .search-form button:hover {
-  background: rgb(0, 0, 204);
+  background: color-mix(in srgb, var(--page-background) 75%, var(--page-text));
 }
 
 .search-form button:focus-visible,
 .search-form input:focus-visible,
+.auth-form input:focus-visible,
 .social-links a:focus-visible,
+.favorite-card a:focus-visible,
 .auth-actions button:focus-visible,
-.auth-session button:focus-visible {
+.auth-session button:focus-visible,
+.settings-section :focus-visible {
   outline: 3px solid #98adff;
   outline-offset: 3px;
 }
@@ -122,7 +126,7 @@ button {
 .auth-section {
   margin-top: 28px;
   padding-top: 24px;
-  border-top: 1px solid #e1e7f0;
+  border-top: 1px solid color-mix(in srgb, var(--page-text) 45%, transparent);
 }
 
 .auth-section h2 {
@@ -133,7 +137,7 @@ button {
 .auth-form {
   display: grid;
   gap: 10px;
-  text-align: right;
+  text-align: start;
 }
 
 .auth-form label {
@@ -144,10 +148,10 @@ button {
 .auth-form input {
   width: 100%;
   min-width: 0;
-  border: 1px solid #cbd4e2;
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
   border-radius: 10px;
   padding: 12px 14px;
-  background: #fff;
+  background: transparent;
   color: inherit;
   font: inherit;
 }
@@ -169,13 +173,13 @@ button {
 }
 
 .auth-toggle {
-  border: 1px solid #d6deea;
-  background: #fff;
-  color: rgb(0, 0, 255);
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
+  background: transparent;
+  color: var(--page-text);
 }
 
 .auth-toggle:hover {
-  background: #f0f3ff;
+  background: color-mix(in srgb, var(--page-text) 12%, transparent);
 }
 
 .auth-session p {
@@ -183,11 +187,157 @@ button {
 }
 
 .auth-message[data-state="error"] {
-  color: #a22626;
+  color: var(--page-text);
 }
 
 .auth-message[data-state="success"] {
-  color: #187044;
+  color: var(--page-text);
+}
+
+.favorites-section {
+  margin-top: 28px;
+}
+
+.favorites-section > h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.favorite-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--page-text) 35%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--page-background) 75%, transparent);
+}
+
+.favorite-card h3,
+.favorite-card p {
+  margin: 0;
+}
+
+.artist-photo {
+  width: 104px;
+  height: 104px;
+  border: 2px solid var(--page-text);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.song-preview {
+  position: relative;
+  display: block;
+  width: min(100%, 220px);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--page-text) 50%, transparent);
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+
+.song-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid var(--page-text);
+  transform: translate(-40%, -50%);
+}
+
+.favorite-song-link,
+.image-credit {
+  color: var(--page-text);
+  text-decoration-color: currentColor;
+  text-align: center;
+}
+
+.favorite-song-link {
+  font-weight: 700;
+}
+
+.image-credit {
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+}
+
+.song-list-label {
+  font-size: 0.9rem;
+}
+
+.song-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.song-chips a {
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--page-text);
+  text-decoration: none;
+  animation: song-float 2.4s ease-in-out infinite;
+}
+
+.song-chips a:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.song-chips a:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes song-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.club-badge {
+  display: grid;
+  width: 112px;
+  height: 112px;
+  place-items: center;
+  border: 3px solid var(--page-text);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--page-background) 72%, transparent);
+  color: var(--page-text);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.club-badge:hover {
+  background: color-mix(in srgb, var(--page-text) 12%, transparent);
+}
+
+.club-motto {
+  font-weight: 700;
 }
 
 .social-section {
@@ -211,7 +361,7 @@ button {
   width: 48px;
   height: 48px;
   place-items: center;
-  border: 1px solid #d6deea;
+  border: 1px solid color-mix(in srgb, var(--page-text) 60%, transparent);
   border-radius: 50%;
 }
 
@@ -222,13 +372,75 @@ button {
 }
 
 .social-links a:hover {
-  background: #f0f3ff;
+  background: color-mix(in srgb, var(--page-text) 12%, transparent);
 }
 
 .message {
   min-height: 1.5em;
   margin: 10px 0 0;
-  color: #a22626;
+  color: var(--page-text);
+}
+
+.settings-section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--page-text) 45%, transparent);
+  text-align: start;
+}
+
+.settings-section summary {
+  color: var(--page-text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.settings-grid select {
+  max-width: 180px;
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: var(--page-background);
+  color: var(--page-text);
+  font: inherit;
+}
+
+.settings-grid input[type="color"] {
+  width: 48px;
+  height: 36px;
+  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
+  border-radius: 8px;
+  padding: 3px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.settings-grid button,
+.settings-message,
+.privacy-notice {
+  grid-column: 1 / -1;
+}
+
+.settings-grid button {
+  justify-self: start;
+}
+
+.settings-message,
+.privacy-notice {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.privacy-notice {
+  opacity: 0.85;
 }
 
 .visually-hidden {
@@ -244,7 +456,8 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-name {
+  .site-name,
+  .song-chips a {
     animation: none;
   }
 }

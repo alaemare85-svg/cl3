@@ -1,6 +1,156 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { createShader } from "https://esm.sh/shaders@4.0.7/js";
 
+const translations = {
+  ar: {
+    description: "ابحث في الويب وتعرّف على ما أحب.",
+    intro: "ابحث في الويب واكتشف ما تريد.",
+    "search-label": "ما الذي تريد البحث عنه؟",
+    "search-placeholder": "اكتب كلمات البحث هنا",
+    "search-button": "بحث",
+    "search-empty": "اكتب كلمات البحث أولًا.",
+    "auth-heading": "حساب العميل",
+    "auth-email": "البريد الإلكتروني",
+    "auth-password": "كلمة المرور",
+    "auth-create": "إنشاء حساب",
+    "auth-login": "تسجيل الدخول",
+    "auth-has-account": "لديك حساب؟ سجّل الدخول",
+    "auth-no-account": "ليس لديك حساب؟ أنشئ حسابًا",
+    "auth-signout": "تسجيل الخروج",
+    "auth-not-configured": "يلزم إعداد مشروع Supabase لتفعيل الحسابات.",
+    "auth-config-needed": "أضف رابط مشروع Supabase ومفتاحه العام في script.js لتفعيل الحسابات.",
+    "auth-welcome": "مرحبًا",
+    "auth-create-success": "تم إنشاء حسابك وتسجيل الدخول.",
+    "auth-confirm-email": "تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتأكيده.",
+    "auth-login-success": "تم تسجيل الدخول بنجاح.",
+    "auth-logout-success": "تم تسجيل الخروج.",
+    "auth-operation-error": "تعذّر إتمام العملية:",
+    "auth-restore-error": "تعذّر استعادة جلسة الدخول:",
+    "auth-logout-error": "تعذّر تسجيل الخروج:",
+    "auth-no-connection": "اتصال Supabase غير مُعدّ.",
+    "favorites-heading": "إذا أردت أن تعرف ماذا أحب",
+    "umm-name": "أم كلثوم",
+    "umm-photo-alt": "أم كلثوم في فيلم فاطمة",
+    "favorite-song": "أغنيتي المفضلة: بعيد عنك",
+    "umm-image-credit": "صورة أم كلثوم: المجال العام عبر Wikimedia Commons",
+    "mohammed-name": "محمد عبده",
+    "mohammed-photo-alt": "الفنان محمد عبده",
+    "mohammed-songs": "أغانٍ شهيرة لمحمد عبده",
+    "song-places": "الأماكن",
+    "song-thursday": "ليلة خميس",
+    "song-voice": "صوتك يناديني",
+    "club-link": "معلومات نادي الاتحاد",
+    "club-badge-label": "الاتحاد",
+    "club-name": "نادي الاتحاد",
+    "club-motto": "الاتحاد منذ 1996 حتى نهاية العالم",
+    "club-image-credit": "معلومات النادي",
+    "social-heading": "مواقع التواصل الاجتماعي",
+    "social-links-aria": "روابط منصات التواصل الاجتماعي",
+    "settings-heading": "إعدادات اللغة والألوان",
+    "language-label": "اللغة",
+    "language-ar": "العربية",
+    "language-en": "English",
+    "background-color-label": "لون الخلفية",
+    "text-color-label": "لون النص",
+    "reset-settings": "استعادة الإعدادات",
+    "privacy-note": "تُحفظ إعدادات اللغة والألوان على هذا الجهاز فقط.",
+    "external-privacy": "لا توجد إعلانات أو أدوات تحليل في الموقع؛ الروابط والخدمات الخارجية تخضع لسياسات مزوّديها.",
+    "settings-saved": "حُفظت الإعدادات على هذا الجهاز.",
+    "settings-save-error": "تعذّر حفظ الإعدادات في هذا المتصفح.",
+    "mohammed-image-credit": "الصورة: yahaycouture.com عبر Flickr، قُصّت للعرض",
+    "mohammed-image-license": "CC BY 2.0",
+  },
+  en: {
+    description: "Search the web and explore my favorites.",
+    intro: "Search the web and discover what you are looking for.",
+    "search-label": "What would you like to search for?",
+    "search-placeholder": "Enter search terms",
+    "search-button": "Search",
+    "search-empty": "Enter search terms first.",
+    "auth-heading": "Customer account",
+    "auth-email": "Email address",
+    "auth-password": "Password",
+    "auth-create": "Create account",
+    "auth-login": "Sign in",
+    "auth-has-account": "Already have an account? Sign in",
+    "auth-no-account": "New here? Create an account",
+    "auth-signout": "Sign out",
+    "auth-not-configured": "A Supabase project must be configured to enable accounts.",
+    "auth-config-needed": "Add the Supabase project URL and public key in script.js to enable accounts.",
+    "auth-welcome": "Welcome",
+    "auth-create-success": "Your account was created and you are signed in.",
+    "auth-confirm-email": "Account created. Check your email to confirm it.",
+    "auth-login-success": "You are signed in.",
+    "auth-logout-success": "You are signed out.",
+    "auth-operation-error": "Could not complete the request:",
+    "auth-restore-error": "Could not restore the session:",
+    "auth-logout-error": "Could not sign out:",
+    "auth-no-connection": "Supabase is not configured.",
+    "favorites-heading": "Want to know what I love?",
+    "umm-name": "Umm Kulthum",
+    "umm-photo-alt": "Umm Kulthum in the film Fatimah",
+    "favorite-song": "My favorite song: Ba'eed Anak",
+    "umm-image-credit": "Umm Kulthum photo: public domain via Wikimedia Commons",
+    "mohammed-name": "Mohammed Abdu",
+    "mohammed-photo-alt": "Saudi singer Mohammed Abdu",
+    "mohammed-songs": "Popular Mohammed Abdu songs",
+    "song-places": "Al Amaken",
+    "song-thursday": "Laylat Khamees",
+    "song-voice": "Soutak Yenadiny",
+    "club-link": "Al-Ittihad Club information",
+    "club-badge-label": "Al-Ittihad",
+    "club-name": "Al-Ittihad Club",
+    "club-motto": "Al-Ittihad since 1996, forever",
+    "club-image-credit": "Club information",
+    "social-heading": "Social media",
+    "social-links-aria": "Social media platform links",
+    "settings-heading": "Language and color settings",
+    "language-label": "Language",
+    "language-ar": "Arabic",
+    "language-en": "English",
+    "background-color-label": "Background color",
+    "text-color-label": "Text color",
+    "reset-settings": "Reset settings",
+    "privacy-note": "Language and color settings are stored only on this device.",
+    "external-privacy": "This site has no ads or analytics; external links and services follow their providers' policies.",
+    "settings-saved": "Settings saved on this device.",
+    "settings-save-error": "This browser could not save the settings.",
+    "mohammed-image-credit": "Photo by yahaycouture.com via Flickr; cropped for display",
+    "mohammed-image-license": "CC BY 2.0",
+  },
+};
+
+const defaultPreferences = {
+  language: "ar",
+  backgroundColor: "#081629",
+  textColor: "#ff4545",
+};
+const preferencesKey = "wcl3-preferences";
+
+function isValidColor(value) {
+  return typeof value === "string" && /^#[\da-f]{6}$/i.test(value);
+}
+
+function loadPreferences() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(preferencesKey) || "{}");
+    return {
+      language: saved.language === "en" ? "en" : "ar",
+      backgroundColor: isValidColor(saved.backgroundColor)
+        ? saved.backgroundColor
+        : defaultPreferences.backgroundColor,
+      textColor: isValidColor(saved.textColor)
+        ? saved.textColor
+        : defaultPreferences.textColor,
+    };
+  } catch (error) {
+    console.warn("Could not load local preferences.", error);
+    return { ...defaultPreferences };
+  }
+}
+
+let preferences = loadPreferences();
+
 const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
 const supabaseConfigured =
@@ -22,7 +172,106 @@ const authSession = document.querySelector("#auth-session");
 const authWelcome = document.querySelector("#auth-welcome");
 const authSignout = document.querySelector("#auth-signout");
 const authMessage = document.querySelector("#auth-message");
+const languageSelect = document.querySelector("#language-select");
+const backgroundColorInput = document.querySelector("#background-color");
+const textColorInput = document.querySelector("#text-color");
+const resetSettingsButton = document.querySelector("#reset-settings");
+const settingsMessage = document.querySelector("#settings-message");
+const pageDescription = document.querySelector("#page-description");
 let authMode = "signup";
+let currentSession = null;
+let authMessageKey = "";
+let authMessageState = "info";
+let authMessageDetail = "";
+
+function translate(key) {
+  return translations[preferences.language][key] ?? translations.ar[key] ?? key;
+}
+
+function applyColors() {
+  document.documentElement.style.setProperty(
+    "--page-background",
+    preferences.backgroundColor,
+  );
+  document.documentElement.style.setProperty("--page-text", preferences.textColor);
+  backgroundColorInput.value = preferences.backgroundColor;
+  textColorInput.value = preferences.textColor;
+}
+
+function applyLanguage() {
+  document.documentElement.lang = preferences.language;
+  document.documentElement.dir = preferences.language === "ar" ? "rtl" : "ltr";
+  pageDescription.content = translate("description");
+  languageSelect.value = preferences.language;
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    element.textContent = translate(element.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    element.placeholder = translate(element.dataset.i18nPlaceholder);
+  });
+  document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+    element.setAttribute("aria-label", translate(element.dataset.i18nAria));
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    element.alt = translate(element.dataset.i18nAlt);
+  });
+
+  authSubmit.textContent = translate(
+    authMode === "signup" ? "auth-create" : "auth-login",
+  );
+  authToggle.textContent = translate(
+    authMode === "signup" ? "auth-has-account" : "auth-no-account",
+  );
+  authPassword.autocomplete =
+    authMode === "signup" ? "new-password" : "current-password";
+  searchMessage.textContent = "";
+  settingsMessage.textContent = translate("privacy-note");
+  setAuthMessage(
+    authMessageKey || (supabase ? "" : "auth-not-configured"),
+    authMessageState,
+    authMessageDetail,
+  );
+  renderSession(currentSession);
+}
+
+function savePreferences() {
+  try {
+    localStorage.setItem(preferencesKey, JSON.stringify(preferences));
+    settingsMessage.textContent = translate("settings-saved");
+  } catch (error) {
+    console.error("Could not save local preferences.", error);
+    settingsMessage.textContent = translate("settings-save-error");
+  }
+}
+
+applyColors();
+applyLanguage();
+
+languageSelect.addEventListener("change", () => {
+  preferences.language = languageSelect.value;
+  applyLanguage();
+  savePreferences();
+});
+
+backgroundColorInput.addEventListener("input", () => {
+  preferences.backgroundColor = backgroundColorInput.value;
+  applyColors();
+});
+backgroundColorInput.addEventListener("change", savePreferences);
+
+textColorInput.addEventListener("input", () => {
+  preferences.textColor = textColorInput.value;
+  applyColors();
+});
+textColorInput.addEventListener("change", savePreferences);
+
+resetSettingsButton.addEventListener("click", () => {
+  preferences = { ...defaultPreferences };
+  applyColors();
+  applyLanguage();
+  savePreferences();
+});
 
 const shaderCanvas = document.querySelector("#canvas");
 if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -110,7 +359,7 @@ searchForm.addEventListener("submit", (event) => {
 
   if (!query) {
     event.preventDefault();
-    searchMessage.textContent = "اكتب كلمات البحث أولًا.";
+    searchMessage.textContent = translate("search-empty");
     searchInput.focus();
     return;
   }
@@ -119,29 +368,35 @@ searchForm.addEventListener("submit", (event) => {
   searchMessage.textContent = "";
 });
 
-function setAuthMessage(message, state = "info") {
-  authMessage.textContent = message;
+function setAuthMessage(key = "", state = "info", detail = "") {
+  authMessageKey = key;
+  authMessageState = state;
+  authMessageDetail = detail;
+  authMessage.textContent = key
+    ? `${translate(key)}${detail ? ` ${detail}` : ""}`
+    : "";
   authMessage.dataset.state = state;
 }
 
 function renderSession(session) {
+  currentSession = session;
   const isSignedIn = Boolean(session?.user);
   authForm.hidden = isSignedIn;
   authSession.hidden = !isSignedIn;
 
   if (isSignedIn) {
-    authWelcome.textContent = `مرحبًا، ${session.user.email}`;
+    authWelcome.textContent = `${translate("auth-welcome")}، ${session.user.email}`;
   }
 }
 
 function updateAuthMode() {
   const isSignUp = authMode === "signup";
-  authSubmit.textContent = isSignUp ? "إنشاء حساب" : "تسجيل الدخول";
-  authToggle.textContent = isSignUp
-    ? "لديك حساب؟ سجّل الدخول"
-    : "ليس لديك حساب؟ أنشئ حسابًا";
+  authSubmit.textContent = translate(isSignUp ? "auth-create" : "auth-login");
+  authToggle.textContent = translate(
+    isSignUp ? "auth-has-account" : "auth-no-account",
+  );
   authPassword.autocomplete = isSignUp ? "new-password" : "current-password";
-  setAuthMessage("");
+  setAuthMessage(supabase ? "" : "auth-not-configured");
 }
 
 authToggle.addEventListener("click", () => {
@@ -153,7 +408,7 @@ authForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!supabase) {
-    setAuthMessage("أضف رابط مشروع Supabase ومفتاحه العام في script.js لتفعيل الحسابات.", "error");
+    setAuthMessage("auth-config-needed", "error");
     return;
   }
 
@@ -178,9 +433,7 @@ authForm.addEventListener("submit", async (event) => {
 
       renderSession(data.session);
       setAuthMessage(
-        data.session
-          ? "تم إنشاء حسابك وتسجيل الدخول."
-          : "تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتأكيده.",
+        data.session ? "auth-create-success" : "auth-confirm-email",
         "success",
       );
     } else {
@@ -194,10 +447,10 @@ authForm.addEventListener("submit", async (event) => {
       }
 
       renderSession(data.session);
-      setAuthMessage("تم تسجيل الدخول بنجاح.", "success");
+      setAuthMessage("auth-login-success", "success");
     }
   } catch (error) {
-    setAuthMessage(`تعذّر إتمام العملية: ${error.message}`, "error");
+    setAuthMessage("auth-operation-error", "error", error.message);
   } finally {
     authSubmit.disabled = false;
     authToggle.disabled = false;
@@ -206,7 +459,7 @@ authForm.addEventListener("submit", async (event) => {
 
 authSignout.addEventListener("click", async () => {
   if (!supabase) {
-    setAuthMessage("اتصال Supabase غير مُعدّ.", "error");
+    setAuthMessage("auth-no-connection", "error");
     return;
   }
 
@@ -219,9 +472,9 @@ authSignout.addEventListener("click", async () => {
     }
 
     renderSession(null);
-    setAuthMessage("تم تسجيل الخروج.", "success");
+    setAuthMessage("auth-logout-success", "success");
   } catch (error) {
-    setAuthMessage(`تعذّر تسجيل الخروج: ${error.message}`, "error");
+    setAuthMessage("auth-logout-error", "error", error.message);
   } finally {
     authSignout.disabled = false;
   }
@@ -233,7 +486,7 @@ if (supabase) {
 
   const { data, error } = await supabase.auth.getSession();
   if (error) {
-    setAuthMessage(`تعذّر استعادة جلسة الدخول: ${error.message}`, "error");
+    setAuthMessage("auth-restore-error", "error", error.message);
   } else {
     renderSession(data.session);
     setAuthMessage("");

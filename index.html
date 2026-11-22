@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
+      id="page-description"
       content="ابحث في الويب وتصفح روابط مواقع التواصل الاجتماعي."
     >
     <title>wcl3</title>
@@ -15,26 +16,27 @@
     <canvas id="canvas" aria-hidden="true"></canvas>
     <main class="card">
       <h1 class="site-name">wcl3</h1>
-      <p class="intro">ابحث في الويب واكتشف ما تريد.</p>
+      <p class="intro" data-i18n="intro">ابحث في الويب واكتشف ما تريد.</p>
 
       <form id="search-form" class="search-form" action="https://www.google.com/search" method="get" role="search">
-        <label class="visually-hidden" for="search-input">ما الذي تريد البحث عنه؟</label>
+        <label class="visually-hidden" for="search-input" data-i18n="search-label">ما الذي تريد البحث عنه؟</label>
         <input
           id="search-input"
           type="search"
           name="q"
           placeholder="اكتب كلمات البحث هنا"
+          data-i18n-placeholder="search-placeholder"
           autocomplete="off"
           required
         >
-        <button type="submit">بحث</button>
+        <button type="submit" data-i18n="search-button">بحث</button>
       </form>
       <p id="search-message" class="message" aria-live="polite"></p>
 
       <section class="auth-section" aria-labelledby="auth-heading">
-        <h2 id="auth-heading">حساب العميل</h2>
+        <h2 id="auth-heading" data-i18n="auth-heading">حساب العميل</h2>
         <form id="auth-form" class="auth-form">
-          <label for="customer-email">البريد الإلكتروني</label>
+          <label for="customer-email" data-i18n="auth-email">البريد الإلكتروني</label>
           <input
             id="customer-email"
             type="email"
@@ -42,7 +44,7 @@
             autocomplete="email"
             required
           >
-          <label for="customer-password">كلمة المرور</label>
+          <label for="customer-password" data-i18n="auth-password">كلمة المرور</label>
           <input
             id="customer-password"
             type="password"
@@ -62,16 +64,128 @@
         </form>
         <div id="auth-session" class="auth-session" hidden>
           <p id="auth-welcome"></p>
-          <button id="auth-signout" type="button">تسجيل الخروج</button>
+          <button id="auth-signout" type="button" data-i18n="auth-signout">تسجيل الخروج</button>
         </div>
         <p id="auth-message" class="auth-message" data-state="info" role="status" aria-live="polite">
           يلزم إعداد مشروع Supabase لتفعيل الحسابات.
         </p>
       </section>
 
+      <section class="favorites-section" aria-labelledby="favorites-heading">
+        <h2 id="favorites-heading" data-i18n="favorites-heading">إذا أردت أن تعرف ماذا أحب</h2>
+        <div class="favorites-grid">
+          <article class="favorite-card">
+            <img
+              class="artist-photo"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/96/Umm_Kulthum_as_Fatimah.jpg"
+              alt="أم كلثوم"
+              data-i18n-alt="umm-photo-alt"
+              width="320"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            >
+            <h3 data-i18n="umm-name">أم كلثوم</h3>
+            <a
+              class="song-preview"
+              href="https://youtu.be/qyotD6YYVnE"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="favorite-song"
+              aria-label="استمع إلى أغنية بعيد عنك على YouTube"
+            >
+              <img
+                src="https://img.youtube.com/vi/qyotD6YYVnE/hqdefault.jpg"
+                alt=""
+                width="480"
+                height="360"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              >
+              <span class="play-icon" aria-hidden="true"></span>
+            </a>
+            <a
+              class="favorite-song-link"
+              href="https://youtu.be/qyotD6YYVnE"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="favorite-song"
+            >أغنيتي المفضلة: بعيد عنك</a>
+            <a
+              class="image-credit"
+              href="https://commons.wikimedia.org/wiki/File:Umm_Kulthum_as_Fatimah.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="umm-image-credit"
+            >صورة أم كلثوم: المجال العام عبر Wikimedia Commons</a>
+          </article>
+
+          <article class="favorite-card">
+            <img
+              class="artist-photo"
+              src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Mohammed_Abdu.jpg"
+              alt="محمد عبده"
+              data-i18n-alt="mohammed-photo-alt"
+              width="320"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            >
+            <h3 data-i18n="mohammed-name">محمد عبده</h3>
+            <p class="song-list-label" data-i18n="mohammed-songs">أغانٍ شهيرة</p>
+            <div class="song-chips" aria-label="أغانٍ لمحمد عبده" data-i18n-aria="mohammed-songs">
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D8%A7%D9%84%D8%A3%D9%85%D8%A7%D9%83%D9%86" target="_blank" rel="noopener noreferrer" data-i18n="song-places">الأماكن</a>
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D9%84%D9%8A%D9%84%D8%A9+%D8%AE%D9%85%D9%8A%D8%B3" target="_blank" rel="noopener noreferrer" data-i18n="song-thursday">ليلة خميس</a>
+              <a href="https://www.youtube.com/results?search_query=%D9%85%D8%AD%D9%85%D8%AF+%D8%B9%D8%A8%D8%AF%D9%87+%D8%B5%D9%88%D8%AA%D9%83+%D9%8A%D9%86%D8%A7%D8%AF%D9%8A%D9%86%D9%8A" target="_blank" rel="noopener noreferrer" data-i18n="song-voice">صوتك يناديني</a>
+            </div>
+            <p class="image-credit">
+              <a
+                href="https://commons.wikimedia.org/wiki/File:Mohammed_Abdu.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="mohammed-image-credit"
+              >الصورة: yahaycouture.com عبر Flickr، قُصّت للعرض</a>
+              ·
+              <a
+                href="https://creativecommons.org/licenses/by/2.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="mohammed-image-license"
+              >CC BY 2.0</a>
+            </p>
+          </article>
+
+          <article class="favorite-card club-card">
+            <a
+              class="club-badge"
+              href="https://en.wikipedia.org/wiki/Al-Ittihad_Club_(Jeddah)"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n-aria="club-link"
+              aria-label="معلومات نادي الاتحاد"
+            >
+              <span aria-hidden="true" data-i18n="club-badge-label">الاتحاد</span>
+            </a>
+            <h3 data-i18n="club-name">نادي الاتحاد</h3>
+            <p class="club-motto" data-i18n="club-motto">الاتحاد منذ 1996 حتى نهاية العالم</p>
+            <a
+              class="image-credit"
+              href="https://en.wikipedia.org/wiki/Al-Ittihad_Club_(Jeddah)"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="club-image-credit"
+            >مصدر الشعار ومعلومات النادي</a>
+          </article>
+        </div>
+      </section>
+
       <section class="social-section" aria-labelledby="social-heading">
-        <h2 id="social-heading">مواقع التواصل الاجتماعي</h2>
-        <nav class="social-links" aria-label="روابط منصات التواصل الاجتماعي">
+        <h2 id="social-heading" data-i18n="social-heading">مواقع التواصل الاجتماعي</h2>
+        <nav
+          class="social-links"
+          aria-label="روابط منصات التواصل الاجتماعي"
+          data-i18n-aria="social-links-aria"
+        >
           <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" width="24" height="24" loading="lazy">
           </a>
@@ -89,6 +203,28 @@
           </a>
         </nav>
       </section>
+
+      <details class="settings-section">
+        <summary id="settings-heading" data-i18n="settings-heading">إعدادات اللغة والألوان</summary>
+        <div class="settings-grid">
+          <label for="language-select" data-i18n="language-label">اللغة</label>
+          <select id="language-select">
+            <option value="ar" data-i18n="language-ar">العربية</option>
+            <option value="en" data-i18n="language-en">English</option>
+          </select>
+          <label for="background-color" data-i18n="background-color-label">لون الخلفية</label>
+          <input id="background-color" type="color" value="#081629">
+          <label for="text-color" data-i18n="text-color-label">لون النص</label>
+          <input id="text-color" type="color" value="#ff4545">
+          <button id="reset-settings" type="button" data-i18n="reset-settings">استعادة الإعدادات</button>
+          <p id="settings-message" class="settings-message" data-i18n="privacy-note">
+            تُحفظ إعدادات اللغة والألوان على هذا الجهاز فقط.
+          </p>
+          <p class="privacy-notice" data-i18n="external-privacy">
+            لا توجد إعلانات أو أدوات تحليل في الموقع؛ الروابط والخدمات الخارجية تخضع لسياسات مزوّديها.
+          </p>
+        </div>
+      </details>
     </main>
   </body>
 </html>
