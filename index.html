@@ -160,6 +160,54 @@
         </nav>
       </section>
 
+      <section class="secure-preview-section" aria-labelledby="secure-preview-heading">
+        <h2 id="secure-preview-heading" data-i18n="secure-preview-heading">معاينة واجهة الوصول</h2>
+        <p id="secure-preview-notice" class="secure-preview-notice" data-i18n="secure-preview-notice">
+          تصميم تجريبي فقط؛ الحقول والزر معطّلة. لا تُدخل بيانات حقيقية.
+        </p>
+        <div class="glitch-form-wrapper">
+          <div class="glitch-card" aria-describedby="secure-preview-notice">
+            <div class="card-header">
+              <div class="card-title">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                  <path d="M12 11.5a3 3 0 0 0 -3 2.824v1.176a3 3 0 0 0 6 0v-1.176a3 3 0 0 0 -3 -2.824z"></path>
+                </svg>
+                <span data-i18n="secure-data-title">SECURE_DATA</span>
+              </div>
+              <div class="card-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="card-body">
+              <div class="form-group">
+                <label for="preview-username" class="form-label" data-i18n="preview-username">USERNAME</label>
+                <input id="preview-username" type="text" disabled>
+              </div>
+              <div class="form-group">
+                <label for="preview-access-key" class="form-label" data-i18n="preview-access-key">ACCESS_KEY</label>
+                <input id="preview-access-key" type="password" disabled>
+              </div>
+              <button type="button" class="submit-btn" disabled data-i18n="preview-connect">
+                INITIATE_CONNECTION
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <details class="settings-section">
         <summary id="settings-heading" data-i18n="settings-heading">إعدادات اللغة والألوان</summary>
         <div class="settings-grid">
