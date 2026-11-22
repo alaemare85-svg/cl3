@@ -191,8 +191,17 @@ button {
 
 .artist-card {
   width: min(100%, 190px);
+  height: 190px;
+  min-height: 190px;
   justify-self: center;
-  padding: 10px;
+  justify-content: center;
+  gap: 6px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.artist-card h3 {
+  font-size: 0.9rem;
 }
 
 .favorite-card h3,
@@ -201,8 +210,8 @@ button {
 }
 
 .artist-photo {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   border: 2px solid var(--page-text);
   border-radius: 50%;
   object-fit: cover;
@@ -211,7 +220,7 @@ button {
 .song-preview {
   position: relative;
   display: block;
-  width: min(100%, 150px);
+  width: min(100%, 96px);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--page-text) 50%, transparent);
   border-radius: 12px;
@@ -237,15 +246,10 @@ button {
   transform: translate(-40%, -50%);
 }
 
-.favorite-song-link,
 .image-credit {
   color: var(--page-text);
   text-decoration-color: currentColor;
   text-align: center;
-}
-
-.favorite-song-link {
-  font-weight: 700;
 }
 
 .image-credit {
@@ -253,8 +257,16 @@ button {
   overflow-wrap: anywhere;
 }
 
+.artist-attribution {
+  margin: 12px 0 0;
+}
+
 .song-list-label {
   font-size: 0.9rem;
+}
+
+.artist-card .song-list-label {
+  font-size: 0.75rem;
 }
 
 .song-chips {
@@ -264,6 +276,10 @@ button {
   gap: 8px;
 }
 
+.artist-card .song-chips {
+  gap: 4px;
+}
+
 .song-chips a {
   border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
   border-radius: 999px;
@@ -271,6 +287,11 @@ button {
   color: var(--page-text);
   text-decoration: none;
   animation: song-float 2.4s ease-in-out infinite;
+}
+
+.artist-card .song-chips a {
+  padding: 3px 5px;
+  font-size: 0.65rem;
 }
 
 .song-chips a:nth-child(2) {
