@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: transparent;
+  color: inherit;
+}
+
 body {
   position: relative;
   isolation: isolate;
@@ -113,85 +118,11 @@ button {
 
 .search-form button:focus-visible,
 .search-form input:focus-visible,
-.auth-form input:focus-visible,
 .social-links a:focus-visible,
 .favorite-card a:focus-visible,
-.auth-actions button:focus-visible,
-.auth-session button:focus-visible,
 .settings-section :focus-visible {
   outline: 3px solid #98adff;
   outline-offset: 3px;
-}
-
-.auth-section {
-  margin-top: 28px;
-  padding-top: 24px;
-  border-top: 1px solid color-mix(in srgb, var(--page-text) 45%, transparent);
-}
-
-.auth-section h2 {
-  margin: 0 0 16px;
-  font-size: 1.1rem;
-}
-
-.auth-form {
-  display: grid;
-  gap: 10px;
-  text-align: start;
-}
-
-.auth-form label {
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.auth-form input {
-  width: 100%;
-  min-width: 0;
-  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
-  border-radius: 10px;
-  padding: 12px 14px;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-}
-
-.auth-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.auth-actions button {
-  flex: 1 1 180px;
-}
-
-.auth-submit:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-}
-
-.auth-toggle {
-  border: 1px solid color-mix(in srgb, var(--page-text) 70%, transparent);
-  background: transparent;
-  color: var(--page-text);
-}
-
-.auth-toggle:hover {
-  background: color-mix(in srgb, var(--page-text) 12%, transparent);
-}
-
-.auth-session p {
-  overflow-wrap: anywhere;
-}
-
-.auth-message[data-state="error"] {
-  color: var(--page-text);
-}
-
-.auth-message[data-state="success"] {
-  color: var(--page-text);
 }
 
 .favorites-section {
