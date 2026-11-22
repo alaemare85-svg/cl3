@@ -27,35 +27,6 @@ body {
   background-color: var(--page-background);
 }
 
-body::before {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  pointer-events: none;
-  background-image:
-    linear-gradient(
-      color-mix(in srgb, var(--page-background) 48%, transparent),
-      color-mix(in srgb, var(--page-background) 48%, transparent)
-    ),
-    url("assets/network-earth.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  -webkit-mask-image:
-    radial-gradient(ellipse at center, #000 54%, rgb(0 0 0 / 85%) 78%, transparent 120%);
-  mask-image:
-    radial-gradient(ellipse at center, #000 54%, rgb(0 0 0 / 85%) 78%, transparent 120%);
-  filter: hue-rotate(0deg) saturate(1.7);
-  animation: planet-rgb 18s linear infinite;
-}
-
-@keyframes planet-rgb {
-  to {
-    filter: hue-rotate(360deg) saturate(1.7);
-  }
-}
-
 #canvas {
   position: fixed;
   inset: 0;
@@ -440,7 +411,6 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::before,
   .site-name,
   .song-chips a {
     animation: none;
