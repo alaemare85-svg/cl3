@@ -27,14 +27,60 @@ body {
   background-color: var(--page-background);
 }
 
+body::before,
+body::after {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  z-index: 0;
+  background-image:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--page-background) 76%, transparent),
+      color-mix(in srgb, var(--page-background) 58%, transparent)
+    ),
+    url("assets/network-earth.png");
+  background-position: center, center 46%;
+  background-repeat: no-repeat;
+  background-size: cover, min(980px, 100vw) auto;
+  opacity: 0.78;
+}
+
+body::after {
+  z-index: 1;
+  inset: -28%;
+  background:
+    radial-gradient(ellipse at 18% 28%, rgb(0 229 255 / 30%), transparent 31%),
+    radial-gradient(ellipse at 82% 30%, rgb(255 0 229 / 27%), transparent 33%),
+    radial-gradient(ellipse at 58% 84%, rgb(92 45 255 / 30%), transparent 36%);
+  filter: blur(70px);
+  animation: rgb-flow 24s ease-in-out infinite alternate;
+}
+
+@keyframes rgb-flow {
+  from {
+    transform: translate3d(-2%, 1%, 0) rotate(-3deg) scale(1);
+    filter: blur(70px) hue-rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(2%, -1%, 0) rotate(8deg) scale(1.08);
+    filter: blur(70px) hue-rotate(105deg);
+  }
+}
+
 #canvas {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
-  opacity: 0.48;
+  opacity: 0.3;
   filter: brightness(1.35) saturate(1.6);
   pointer-events: none;
 }
@@ -45,13 +91,16 @@ body {
 
 .card {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   width: min(100%, 600px);
   padding: clamp(24px, 6vw, 48px);
   border: 1px solid color-mix(in srgb, var(--page-text) 45%, transparent);
   border-radius: 20px;
-  background: transparent;
-  box-shadow: 0 16px 48px rgb(23 32 51 / 8%);
+  background: color-mix(in srgb, var(--page-background) 76%, transparent);
+  box-shadow:
+    0 20px 70px rgb(0 0 0 / 30%),
+    0 0 34px color-mix(in srgb, var(--page-text) 10%, transparent);
+  backdrop-filter: blur(18px);
   text-align: center;
 }
 
@@ -411,6 +460,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body::after,
   .site-name,
   .song-chips a {
     animation: none;
