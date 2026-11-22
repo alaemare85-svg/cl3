@@ -2,7 +2,7 @@
   color-scheme: light;
   font-family: Tahoma, Arial, sans-serif;
   background: #080b14;
-  color: #172033;
+  color: #f1f5ff;
 }
 
 * {
@@ -40,8 +40,7 @@ body {
   padding: clamp(24px, 6vw, 48px);
   border: 1px solid #e1e7f0;
   border-radius: 20px;
-  background: rgb(255 255 255 / 88%);
-  backdrop-filter: blur(8px);
+  background: transparent;
   box-shadow: 0 16px 48px rgb(23 32 51 / 8%);
   text-align: center;
 }
@@ -71,7 +70,7 @@ body {
 
 .intro {
   margin: 12px 0 24px;
-  color: #596579;
+  color: #d3d9e8;
   line-height: 1.8;
 }
 
@@ -83,12 +82,17 @@ body {
 .search-form input {
   min-width: 0;
   flex: 1;
-  border: 1px solid #cbd4e2;
+  border: 1px solid rgb(255 255 255 / 55%);
   border-radius: 10px;
   padding: 12px 14px;
   background: transparent;
   color: inherit;
   font: inherit;
+}
+
+.search-form input::placeholder {
+  color: rgb(230 235 245 / 80%);
+  opacity: 1;
 }
 
 button {
