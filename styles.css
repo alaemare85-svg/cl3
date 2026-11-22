@@ -318,22 +318,11 @@ button {
   }
 }
 
-.club-badge {
-  display: grid;
+.club-emblem img {
+  display: block;
   width: 112px;
   height: 112px;
-  place-items: center;
-  border: 3px solid var(--page-text);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--page-background) 72%, transparent);
-  color: var(--page-text);
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.club-badge:hover {
-  background: color-mix(in srgb, var(--page-text) 12%, transparent);
+  object-fit: contain;
 }
 
 .club-motto {
