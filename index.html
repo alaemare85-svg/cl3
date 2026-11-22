@@ -9,7 +9,7 @@
     >
     <title>wcl3</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module"></script>
   </head>
   <body>
     <main class="card">
@@ -29,6 +29,44 @@
         <button type="submit">بحث</button>
       </form>
       <p id="search-message" class="message" aria-live="polite"></p>
+
+      <section class="auth-section" aria-labelledby="auth-heading">
+        <h2 id="auth-heading">حساب العميل</h2>
+        <form id="auth-form" class="auth-form">
+          <label for="customer-email">البريد الإلكتروني</label>
+          <input
+            id="customer-email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+          >
+          <label for="customer-password">كلمة المرور</label>
+          <input
+            id="customer-password"
+            type="password"
+            name="password"
+            minlength="6"
+            autocomplete="new-password"
+            required
+          >
+          <div class="auth-actions">
+            <button id="auth-submit" class="auth-submit" type="submit" disabled>
+              إنشاء حساب
+            </button>
+            <button id="auth-toggle" class="auth-toggle" type="button">
+              لديك حساب؟ سجّل الدخول
+            </button>
+          </div>
+        </form>
+        <div id="auth-session" class="auth-session" hidden>
+          <p id="auth-welcome"></p>
+          <button id="auth-signout" type="button">تسجيل الخروج</button>
+        </div>
+        <p id="auth-message" class="auth-message" data-state="info" role="status" aria-live="polite">
+          يلزم إعداد مشروع Supabase لتفعيل الحسابات.
+        </p>
+      </section>
 
       <section class="social-section" aria-labelledby="social-heading">
         <h2 id="social-heading">مواقع التواصل الاجتماعي</h2>

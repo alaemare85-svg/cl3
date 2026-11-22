@@ -89,9 +89,82 @@ button {
 
 .search-form button:focus-visible,
 .search-form input:focus-visible,
-.social-links a:focus-visible {
+.social-links a:focus-visible,
+.auth-actions button:focus-visible,
+.auth-session button:focus-visible {
   outline: 3px solid #98adff;
   outline-offset: 3px;
+}
+
+.auth-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #e1e7f0;
+}
+
+.auth-section h2 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+  text-align: right;
+}
+
+.auth-form label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.auth-form input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #cbd4e2;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.auth-actions button {
+  flex: 1 1 180px;
+}
+
+.auth-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.auth-toggle {
+  border: 1px solid #d6deea;
+  background: #fff;
+  color: rgb(0, 0, 255);
+}
+
+.auth-toggle:hover {
+  background: #f0f3ff;
+}
+
+.auth-session p {
+  overflow-wrap: anywhere;
+}
+
+.auth-message[data-state="error"] {
+  color: #a22626;
+}
+
+.auth-message[data-state="success"] {
+  color: #187044;
 }
 
 .social-section {
