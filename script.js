@@ -1,14 +1,21 @@
-import { createShader } from "https://esm.sh/shaders@4.0.7/js";
-
 const translations = {
   ar: {
-    description: "ابحث في الويب وتعرّف على ما أحب.",
-    intro: "ابحث في الويب واكتشف ما تريد.",
+    description: "ابحث واستكشف المفضّلات في مساحة wcl3 الرقمية.",
+    "main-navigation": "التنقل الرئيسي",
+    "nav-favorites": "المفضّلات",
+    "nav-social": "التواصل",
+    "nav-settings": "الإعدادات",
+    "hero-kicker": "مساحة رقمية بطابعك",
+    "hero-title": "اكتشف ما تحب، بطريقتك.",
+    intro: "مكانك للبحث والاستكشاف والاستمتاع بمفضّلاتك.",
+    "hero-explore": "استكشف المفضّلات",
     "search-label": "ما الذي تريد البحث عنه؟",
-    "search-placeholder": "اكتب كلمات البحث هنا",
-    "search-button": "بحث",
+    "search-placeholder": "ابحث في الويب...",
+    "search-button": "ابحث",
     "search-empty": "اكتب كلمات البحث أولًا.",
-    "favorites-heading": "إذا أردت أن تعرف ماذا أحب",
+    "favorites-kicker": "مختارات شخصية",
+    "favorites-heading": "أشياء أحبها",
+    "favorites-intro": "موسيقى وفنّ وفريق يسكن القلب.",
     "umm-name": "أم كلثوم",
     "umm-photo-alt": "أم كلثوم في فيلم فاطمة",
     "favorite-song": "أغنيتي المفضلة: بعيد عنك",
@@ -23,15 +30,26 @@ const translations = {
     "club-name": "نادي الاتحاد",
     "club-motto": "الاتحاد منذ 1996 حتى نهاية العالم",
     "club-image-credit": "مصدر الشعار",
-    "social-heading": "مواقع التواصل الاجتماعي",
+    "social-kicker": "ابقَ على اتصال",
+    "social-heading": "تابعني",
+    "social-intro": "مساحاتي على المنصات الاجتماعية.",
     "social-links-aria": "روابط منصات التواصل الاجتماعي",
-    "secure-preview-heading": "معاينة واجهة الوصول",
+    "preview-kicker": "تصميم واجهة",
+    "secure-preview-heading": "بطاقة الوصول",
     "secure-preview-notice": "تصميم تجريبي فقط؛ الحقول والزر معطّلة. لا تُدخل بيانات حقيقية.",
     "secure-data-title": "بيانات تجريبية",
     "preview-username": "اسم المستخدم",
     "preview-access-key": "مفتاح الوصول",
     "preview-connect": "بدء الاتصال",
-    "settings-heading": "إعدادات اللغة والألوان",
+    "privacy-kicker": "الخصوصية والأمان",
+    "privacy-heading": "خصوصيتك أولًا",
+    "privacy-local-title": "إعداداتك تبقى على جهازك",
+    "privacy-local-description": "اللغة والألوان تُحفظ محليًا في المتصفح فقط.",
+    "privacy-no-tracking-title": "لا حسابات أو أدوات تحليل",
+    "privacy-no-tracking-description": "لا يضيف الموقع خدمة تسجيل دخول أو أدوات تحليل.",
+    "privacy-search-title": "البحث باختيارك",
+    "privacy-search-description": "عند البحث فقط، يُرسل الاستعلام إلى Google.",
+    "privacy-external-note": "الصور والروابط الخارجية تصل إلى مزوّديها وقد تخضع لسياساتهم.",
     "language-label": "اللغة",
     "language-ar": "العربية",
     "language-en": "English",
@@ -50,15 +68,26 @@ const translations = {
     "settings-save-error": "تعذّر حفظ الإعدادات في هذا المتصفح.",
     "mohammed-image-credit": "الصورة: yahaycouture.com عبر Flickr، قُصّت للعرض",
     "mohammed-image-license": "CC BY 2.0",
+    "footer-note": "مساحة شخصية تستمر في التطوّر.",
+    "back-to-top": "العودة للأعلى ↑",
   },
   en: {
-    description: "Search the web and explore my favorites.",
-    intro: "Search the web and discover what you are looking for.",
+    description: "Search and explore favorites in the wcl3 digital space.",
+    "main-navigation": "Main navigation",
+    "nav-favorites": "Favorites",
+    "nav-social": "Social",
+    "nav-settings": "Settings",
+    "hero-kicker": "A digital space shaped by you",
+    "hero-title": "Discover what you love, your way.",
+    intro: "Your place to search, explore, and enjoy favorite things.",
+    "hero-explore": "Explore favorites",
     "search-label": "What would you like to search for?",
-    "search-placeholder": "Enter search terms",
+    "search-placeholder": "Search the web...",
     "search-button": "Search",
     "search-empty": "Enter search terms first.",
-    "favorites-heading": "Want to know what I love?",
+    "favorites-kicker": "Personal picks",
+    "favorites-heading": "Things I love",
+    "favorites-intro": "Music, art, and a team close to my heart.",
     "umm-name": "Umm Kulthum",
     "umm-photo-alt": "Umm Kulthum in the film Fatimah",
     "favorite-song": "My favorite song: Ba'eed Anak",
@@ -73,15 +102,26 @@ const translations = {
     "club-name": "Al-Ittihad Club",
     "club-motto": "Al-Ittihad since 1996, forever",
     "club-image-credit": "Logo source",
-    "social-heading": "Social media",
+    "social-kicker": "Stay connected",
+    "social-heading": "Follow along",
+    "social-intro": "Find me on social platforms.",
     "social-links-aria": "Social media platform links",
-    "secure-preview-heading": "Access card preview",
+    "preview-kicker": "Interface concept",
+    "secure-preview-heading": "Access card",
     "secure-preview-notice": "Visual mockup only; the fields and button are disabled. Do not enter real information.",
     "secure-data-title": "DEMO_DATA",
     "preview-username": "USERNAME",
     "preview-access-key": "ACCESS_KEY",
     "preview-connect": "INITIATE_CONNECTION",
-    "settings-heading": "Language and color settings",
+    "privacy-kicker": "Privacy and security",
+    "privacy-heading": "Your privacy comes first",
+    "privacy-local-title": "Your settings stay on your device",
+    "privacy-local-description": "Language and colors are stored locally in this browser.",
+    "privacy-no-tracking-title": "No accounts or analytics",
+    "privacy-no-tracking-description": "The site adds no sign-in service or analytics tools.",
+    "privacy-search-title": "Search on your terms",
+    "privacy-search-description": "Your query is sent to Google only when you search.",
+    "privacy-external-note": "External images and links connect to their providers and may be subject to their policies.",
     "language-label": "Language",
     "language-ar": "Arabic",
     "language-en": "English",
@@ -100,6 +140,8 @@ const translations = {
     "settings-save-error": "This browser could not save the settings.",
     "mohammed-image-credit": "Photo by yahaycouture.com via Flickr; cropped for display",
     "mohammed-image-license": "CC BY 2.0",
+    "footer-note": "A personal space, always evolving.",
+    "back-to-top": "Back to top ↑",
   },
 };
 
@@ -276,131 +318,6 @@ resetSettingsButton.addEventListener("click", () => {
   applyLanguage();
   savePreferences();
 });
-
-const shaderCanvas = document.querySelector("#canvas");
-if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  shaderCanvas.hidden = true;
-} else {
-  try {
-    await createShader(
-      shaderCanvas,
-      {
-        components: [
-          {
-            type: "Godrays",
-            id: "idmws72rbqrk3rryohr",
-            props: {
-              blendMode: "normal-oklch",
-              density: 0.5,
-              intensity: 1,
-              rayColor: "#700404",
-              speed: 2,
-            },
-          },
-          {
-            type: "Godrays",
-            id: "idmws73s0obfxpa27m0",
-            props: {
-              rayColor: "#204d9e",
-            },
-          },
-          {
-            type: "Godrays",
-            id: "idmws73zikjcgdhjbxj",
-            props: {
-              rayColor: "#9b46a6",
-            },
-          },
-          {
-            type: "SineWave",
-            id: "idmws74qq4361wqzx2z",
-            props: {
-              amplitude: 1,
-              color: "#6e3975",
-              frequency: 20,
-              position: {
-                x: 0.54,
-                y: 0.83,
-              },
-              softness: 1,
-              speed: 5,
-              thickness: 0.1,
-            },
-          },
-          {
-            type: "Godrays",
-            id: "idmws75lakirrkxwr0x",
-            props: {
-              rayColor: "#ff00e5",
-            },
-          },
-          {
-            type: "Glitch",
-            id: "idmws75z0yedv979l3i",
-          },
-          {
-            type: "Beam",
-            id: "idmws7c4jmcynqmjk1d",
-            props: {
-              boundingBox: {
-                x: {
-                  unit: "uv",
-                  value: 0.2491,
-                },
-                y: {
-                  unit: "uv",
-                  value: 0.1123,
-                },
-                width: {
-                  unit: "uv",
-                  value: 0.5163,
-                },
-                height: {
-                  unit: "uv",
-                  value: 0.7755,
-                },
-              },
-              insideColor: "#1a0000",
-            },
-          },
-          {
-            type: "Star",
-            id: "idmws7dbgeozwh5vdck",
-            props: {
-              center: {
-                x: 0.52,
-                y: 0.35,
-              },
-              color: "#04043d",
-              radius: 0.0606,
-              rotation: 341,
-            },
-          },
-          {
-            type: "Text",
-            id: "idmws7feqvcelxl0fw7",
-            props: {
-              center: {
-                x: 0.52,
-                y: 0.5,
-              },
-              color: "#00e5ff",
-              fontSize: 0.0414,
-              text: "البحث ",
-            },
-          },
-        ],
-      },
-      {
-        colorSpace: "srgb",
-        toneMapping: "reinhard",
-      },
-    );
-  } catch (error) {
-    shaderCanvas.hidden = true;
-    console.error("Shader effects could not be initialized.", error);
-  }
-}
 
 searchForm.addEventListener("submit", (event) => {
   const query = searchInput.value.trim();
