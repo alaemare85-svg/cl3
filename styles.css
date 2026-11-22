@@ -189,14 +189,20 @@ button {
   background: color-mix(in srgb, var(--page-background) 75%, transparent);
 }
 
+.artist-card {
+  width: min(100%, 190px);
+  justify-self: center;
+  padding: 10px;
+}
+
 .favorite-card h3,
 .favorite-card p {
   margin: 0;
 }
 
 .artist-photo {
-  width: 104px;
-  height: 104px;
+  width: 80px;
+  height: 80px;
   border: 2px solid var(--page-text);
   border-radius: 50%;
   object-fit: cover;
@@ -205,7 +211,7 @@ button {
 .song-preview {
   position: relative;
   display: block;
-  width: min(100%, 220px);
+  width: min(100%, 150px);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--page-text) 50%, transparent);
   border-radius: 12px;
