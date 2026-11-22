@@ -1,8 +1,17 @@
-const welcomeButton = document.querySelector("#welcome-button");
-const message = document.querySelector("#message");
-let clickCount = 0;
+const searchForm = document.querySelector("#search-form");
+const searchInput = document.querySelector("#search-input");
+const searchMessage = document.querySelector("#search-message");
 
-welcomeButton.addEventListener("click", () => {
-  clickCount += 1;
-  message.textContent = `أحسنت! لقد ضغطت على الزر ${clickCount} مرة.`;
+searchForm.addEventListener("submit", (event) => {
+  const query = searchInput.value.trim();
+
+  if (!query) {
+    event.preventDefault();
+    searchMessage.textContent = "اكتب كلمات البحث أولًا.";
+    searchInput.focus();
+    return;
+  }
+
+  searchInput.value = query;
+  searchMessage.textContent = "";
 });

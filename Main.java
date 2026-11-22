@@ -7,10 +7,10 @@ public class Main {
             String name = scanner.nextLine().trim();
 
             if (name.isEmpty()) {
-                name = "صديقي";
+                name = "Al-FHD";
             }
 
-            System.out.println("مرحبًا يا " + name + "! هذا أول برنامج Java لك.");
+            System.out.println("مرحبًا يا " + name + "! هذا أول برنامج Java لك في Al-fhd.");
         }
     }
 }
